@@ -1,0 +1,95 @@
+-show dbs
+=>SHOWS DATABASE
+
+-use mongo_basics;
+=>USE DATABASENAME
+
+-db.createCollection("car_parking")
+=>CREATE COLLECTION
+
+-db.car_parking.insertOne(
+{customer_name:"susan saju",
+car_number:"KA-09 AR-6798",
+car_brand:"hyundayi alcazar",
+incoming_time: "2025-05015T13:05:00"
+}
+)
+=>INSERT KEY VALUE PAIR
+
+-db.car_parking.find()
+=>DISPLAYS
+
+-db.car_parking.findOne({customer_name:"susan saju"})
+=>FIND ONE
+
+-db.car_parking.insertMany(
+[{customer_name:"sophy saju",
+car_number:"KL-10 AR-2378",
+car_brand:"mahindra xuv 600",
+incoming_time: "2025-05-15T13:30:00"
+},
+{customer_name:"sara saju",
+car_number:"TN-03 AJ-1243",
+car_brand:"toyota innova",
+incoming_time:"2025-03-01T15:25:02"
+}]
+)
+=>INSERT MANY
+
+-db.car_parking.updateOne(
+{customer_name:'sophy saju'},
+  {$set:{customer_name:"sophi saju"}}
+);
+=>CHANGES ONLY THE FIRST OCCURENCE
+
+-db.car_parking.updateMany(
+{customer_name:'susan saju'},
+  {$set:{car_brand:"wagonR"}}
+);
+=>CHANGES DUPLICATE VALUES ALSO
+
+-db.car_parking.insertMany(
+[{customer_name:"john",
+car_number:"KL-40 AD-2378",
+car_brand:"mahindra xuv 600",
+incoming_time: "2025-06-15T13:30:00",
+age:24
+},
+{
+customer_name:"peter",
+car_number:"TN-10 AJ-1983",
+car_brand:"toyota etios",
+incoming_time:"2025-11-01T15:25:02",
+age:30
+}
+]
+);
+=>INSERT MANY
+
+-db.car_parking.find({ age: {$gt:24}})
+=>DISPLAYS AGE GREATER THAN 24
+
+-db.car_parking.find({ age: {$gte:24}})
+=>DISPLAYS AGE GREATER THAN AND EQUAL TO 24
+
+-db.car_parking.find({ age: {$lt:30}})
+=>DISPLAYS AGE LESSER THAN 30
+
+-db.car_parking.find({ age: {$lte:30}})
+=>DISPLAYS AGE LESSER THAN AND EQUAL TO 30
+
+-db.car_parking.find(
+{ 
+$or:
+[{age: {$gt:20}},
+ {age: {$lt:35}}]
+}
+)
+=>GIVES THE RANGE
+
+-db.car_parking.find(
+{ 
+age: {$in: [20,24,30]}
+}
+)
+=>CHECKS IF IT IS PRESENT
